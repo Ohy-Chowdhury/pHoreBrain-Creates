@@ -1,0 +1,20 @@
+:root{--bg:#f6f7fb;--card:#fff;--ink:#1b1f2a;--mut:#5b6475;--acc:#1f5fbf;--err:#b42318}
+@media(prefers-color-scheme:dark){:root{--bg:#10131a;--card:#181c26;--ink:#e8ebf2;--mut:#9aa3b5;--acc:#6ea8ff;--err:#ff8a80}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 "Noto Sans Bengali",system-ui,sans-serif}
+main{max-width:860px;margin:0 auto;padding:24px 16px 64px}
+h1{margin:0 0 4px}h2{margin:0 0 8px;font-size:1.1rem}
+.sub,.hint{color:var(--mut);margin:.2rem 0 .8rem}
+section{background:var(--card);border-radius:12px;padding:16px;margin:16px 0;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.row{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;margin:8px 0}
+textarea{width:100%;font:14px/1.5 ui-monospace,Menlo,Consolas,"Noto Sans Bengali",monospace;padding:10px;border:1px solid #8884;border-radius:8px;background:transparent;color:inherit}
+input,select{font:inherit;padding:4px 6px;border-radius:6px;border:1px solid #8886;background:transparent;color:inherit}
+button{font:inherit;padding:8px 16px;border-radius:8px;border:0;background:var(--acc);color:#fff;cursor:pointer}
+button.ghost{background:transparent;color:var(--acc);border:1px solid var(--acc)}
+button:disabled{opacity:.45;cursor:not-allowed}
+.info{margin:.4rem 0;color:var(--mut)}.info.err{color:var(--err);white-space:pre-line}
+code{background:#8882;padding:1px 5px;border-radius:4px}
+#preview{max-height:320px;overflow:auto;margin-top:8px;border:1px solid #8883;border-radius:8px}
+#preview table{border-collapse:collapse;width:100%;font-size:.9rem}
+#preview td,#preview th{padding:4px 8px;border-bottom:1px solid #8883;text-align:left;vertical-align:top}
+#preview tr.type td{background:#1f5fbf22;font-weight:600}

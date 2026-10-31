@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MCQ Slide Maker</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <h1>MCQ Slide Maker</h1>
+  <p class="sub">Tor nijer slide template upload kor, MCQ paste kor, ar ek click e prottek question-er alada slide bhora PPTX download kor. Shob kichu browser-ei hoy, kono file server e jay na.</p>
+
+  <section>
+    <h2>1. Template</h2>
+    <p class="hint">Template pptx-e minimum ekta <b>question sample slide</b> (jar moddhe "(A)…", "Ans:" ache) lagbe. Chaile ekta <b>Type heading sample slide</b> (jeta "Type…" diye shuru) o rakhte paris.</p>
+    <div class="row">
+      <label>Upload korbi: <input type="file" id="tplFile" accept=".pptx"></label>
+      <label>ba built-in demo:
+        <select id="tplBuiltin"><option value="">-- select --</option><option value="templates/demo-rtd.pptx">RTD demo</option></select>
+      </label>
+    </div>
+    <p id="tplInfo" class="info"></p>
+    <div class="row">
+      <label>Question sample slide no. <input type="number" id="qNo" min="1" style="width:5em"></label>
+      <label>Type heading sample slide no. <input type="number" id="tNo" min="1" style="width:5em"></label>
+    </div>
+  </section>
+
+  <section>
+    <h2>2. MCQ</h2>
+    <p class="hint">Format: prottek line e ekta. <code>T|Type heading</code> ba <code>Q|question [tag]|A|B|C|D|answer</code></p>
+    <textarea id="mcqText" rows="14" spellcheck="false"></textarea>
+    <div class="row">
+      <button id="sampleBtn" class="ghost">Sample dekha</button>
+      <button id="checkBtn">Check korbo</button>
+    </div>
+    <p id="parseInfo" class="info"></p>
+    <div id="preview"></div>
+  </section>
+
+  <section>
+    <h2>3. Generate</h2>
+    <button id="genBtn" disabled>Slide banao ar download kor</button>
+    <p id="genInfo" class="info"></p>
+  </section>
+</main>
+<script src="lib/jszip.min.js"></script>
+<script src="core.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
