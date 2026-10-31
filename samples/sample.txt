@@ -1,0 +1,4 @@
+# Format: T|Type heading   ba   Q|question [tag]|A|B|C|D|answer
+T|Type-01: Sample heading
+Q|Bangladesher rajdhani kothay? [Sample 01]|Dhaka|Chattogram|Khulna|Sylhet|A
+Q|2 + 3 = ? [Sample 02]|4|5|6|7|B
