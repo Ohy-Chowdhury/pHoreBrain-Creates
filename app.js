@@ -27,8 +27,14 @@
   $('tplFile').onchange = async (e) => { const f = e.target.files[0]; if (f) { $('tplBuiltin').value = ''; await loadTemplate(await f.arrayBuffer(), f.name); } };
   $('tplBuiltin').onchange = async (e) => {
     if (!e.target.value) return;
-    try { const r = await fetch(e.target.value); if (!r.ok) throw new Error(r.status); await loadTemplate(await r.arrayBuffer(), e.target.value.split('/').pop()); }
-    catch (err) { $('tplInfo').className = 'info err'; $('tplInfo').textContent = 'Built-in template load hoyni (file:// e na chalaye GitHub Pages ba local server e khul).'; }
+    const url = new URL(e.target.value, location.href).href;
+    const err = $('tplInfo'); err.className = 'info err';
+    if (location.protocol === 'file:') { err.textContent = 'Tui file:// diye khulechis. GitHub Pages URL (https://…github.io/…) diye khul.\nChecked URL: ' + url; return; }
+    try {
+      const r = await fetch(url);
+      if (!r.ok) { err.textContent = `Built-in template paoa jayni. HTTP ${r.status}\nChecked URL: ${url}\n` + (r.status === 404 ? 'Mane file ta repo te oi path e nai. Repo-r root e templates/demo-rtd.pptx ache kina dekh.' : ''); return; }
+      await loadTemplate(await r.arrayBuffer(), url.split('/').pop());
+    } catch (ex) { err.textContent = 'Network error: ' + ex.message + '\nChecked URL: ' + url; }
   };
   $('sampleBtn').onclick = () => { $('mcqText').value = SAMPLE; };
   $('checkBtn').onclick = () => {
